@@ -57,7 +57,7 @@ public class Runde4EasyMock {
         
         // mock void function
         // call the function on the mock
-        brickmock.execute(sdo);
+        brickmock.execute2(sdo);
         // say easymock that this is a valid call
         EasyMock.expectLastCall();
         // replay mock

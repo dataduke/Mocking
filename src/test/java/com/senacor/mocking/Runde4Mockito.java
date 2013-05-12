@@ -61,7 +61,7 @@ public class Runde4Mockito {
                 return null;
             }
             
-        }).when(brickmock.execute(sdo));
+        }).when(brickmock).execute2(sdo);
         
         // call the function to test
         instance.execute(sdo);
