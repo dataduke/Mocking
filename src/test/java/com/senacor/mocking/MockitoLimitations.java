@@ -66,7 +66,7 @@ public class MockitoLimitations {
 
             public Object answer(InvocationOnMock invocation) throws Throwable {
                 // we call sysout to prove the call of the mock
-                System.out.println("called toString()");
+                System.out.println("called finalize()");
                 return null;
             }
         }).when(brickmock).finalize();
