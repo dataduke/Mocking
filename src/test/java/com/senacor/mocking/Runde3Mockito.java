@@ -6,6 +6,7 @@ package com.senacor.mocking;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -19,10 +20,11 @@ import org.mockito.stubbing.Answer;
 public class Runde3Mockito {
 
     // The class we test
+    @InjectMocks
     private Activity instance;
     // The class we want to mock
     @Mock
-    private Brick brickmock;
+    private BrickImpl brickmock;
 
     @Before
     public void createMocks() {
@@ -30,16 +32,7 @@ public class Runde3Mockito {
         instance = new ActivityImpl();
 
         // *** create mocks ***
-        // manually created Mock
-        brickmock = Mockito.mock(Brick.class);
-        // or by Annotation
-        MockitoAnnotations.initMocks(instance);
-
-        // *** add mocks to instance ***
-        // by setter
-        instance.setBrick(brickmock);
-        // or by reflection by the Annotation
-        // see line 36
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test

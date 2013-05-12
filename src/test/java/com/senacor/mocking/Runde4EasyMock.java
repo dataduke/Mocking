@@ -25,29 +25,14 @@ public class Runde4EasyMock {
     public void createMocks(){
         // *** create test instance ***
         instance = new ActivityImpl();
-        
+
         // *** create mocks ***
         // Mock with AssertionError for non mocked functions
         brickmock = EasyMock.createMock(Brick.class);
-        // Mock with 0, null or false returns for non mocked functions
-        brickmock = EasyMock.createNiceMock(Brick.class);
-        
+
         // *** add mocks to instance ***
         // by setter
         instance.setBrick(brickmock);
-        // or by reflection
-        Class testClazz = instance.getClass();
-        Class mockClass = brickmock.getClass();
-        for (Field field: testClazz.getFields()) {
-            if (field.getClass().isAssignableFrom(mockClass)) {
-                try {
-                    field.set(instance, brickmock);
-                } catch (Throwable e) {
-                    // exception pain if field is not accessable
-                }
-                break;
-            }
-        }
     }
     
     @Test
@@ -64,6 +49,6 @@ public class Runde4EasyMock {
         EasyMock.replay(brickmock);
         
         // call the function to test
-        instance.execute(sdo);
+        instance.execute2(sdo);
     }
 }

@@ -31,25 +31,10 @@ public class Runde5EasyMock {
         // *** create mocks ***
         // Mock with AssertionError for non mocked functions
         brickmock = EasyMock.createMock(Brick.class);
-        // Mock with 0, null or false returns for non mocked functions
-        brickmock = EasyMock.createNiceMock(Brick.class);
 
         // *** add mocks to instance ***
         // by setter
         instance.setBrick(brickmock);
-        // or by reflection
-        Class testClazz = instance.getClass();
-        Class mockClass = brickmock.getClass();
-        for (Field field : testClazz.getFields()) {
-            if (field.getClass().isAssignableFrom(mockClass)) {
-                try {
-                    field.set(instance, brickmock);
-                } catch (Throwable e) {
-                    // exception pain if field is not accessable
-                }
-                break;
-            }
-        }
     }
 
     @Test
@@ -88,7 +73,7 @@ public class Runde5EasyMock {
         EasyMock.expectLastCall().times(2);
         // or you can stub functions
         EasyMock.expect(brickmock.execute(sdo))
-                .andReturn(sdo2).times(2);
+                .andReturn(sdo2).times(3);
         // replay mock
         EasyMock.replay(brickmock);
 

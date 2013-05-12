@@ -31,4 +31,9 @@ public interface Activity {
      * A function that calls execute and execute2 on brick.
      */
     void execute4(Object sdo);
+    
+    @Override
+    String toString();
+    
+    void finalize() throws Throwable;
 }

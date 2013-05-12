@@ -37,4 +37,14 @@ public class ActivityImpl implements Activity {
         this.brick.execute(sdo);
         this.brick.execute2(sdo);
     }
+
+    @Override
+    public String toString() {
+        return this.brick.toString();
+    }
+
+    @Override
+    public void finalize() throws Throwable {
+        this.brick.finalize();
+    }
 }

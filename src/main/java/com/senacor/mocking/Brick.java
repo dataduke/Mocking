@@ -13,4 +13,9 @@ public interface Brick {
     Object execute(Object sdo);
     
     void execute2(Object sdo);
+    
+    @Override
+    String toString();
+    
+    void finalize() throws Throwable;
 }

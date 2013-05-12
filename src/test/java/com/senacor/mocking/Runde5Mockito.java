@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -21,6 +22,7 @@ import org.mockito.MockitoAnnotations;
 public class Runde5Mockito {
     
     // The class we test
+    @InjectMocks
     private Activity instance;
     
     // The class we want to mock
@@ -31,18 +33,9 @@ public class Runde5Mockito {
     public void createMocks(){
         // *** create test instance ***
         instance = new ActivityImpl();
-        
+
         // *** create mocks ***
-        // manually created Mock
-        brickmock = Mockito.mock(Brick.class);
-        // or by Annotation
-        MockitoAnnotations.initMocks(instance);
-        
-        // *** add mocks to instance ***
-        // by setter
-        instance.setBrick(brickmock);
-        // or by reflection by the Annotation
-        // see line 36
+        MockitoAnnotations.initMocks(this);
     }
     
     @Test
